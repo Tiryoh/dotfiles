@@ -91,8 +91,8 @@ call dein#add('Shougo/unite.vim')
 call dein#add('ujihisa/unite-colorscheme', {'depends' : 'Shougo/unite.vim'})
 
 " vimproc
-"call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-"call dein#add('Shougo/vimshell', {'depends' : 'Shougo/vimproc.vim'})
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Shougo/vimshell', {'depends' : 'Shougo/vimproc.vim'})
 
 " comment
 call dein#add('tomtom/tcomment_vim')
