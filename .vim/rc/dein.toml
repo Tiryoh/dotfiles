@@ -50,6 +50,10 @@ on_ft = ['markdown', 'md']
 repo = 'kannokanno/previm'
 on_ft = ['markdown', 'md']
 
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = ['markdown', 'md']
+
 # toml
 [[plugins]]
 repo = 'cespare/vim-toml'
