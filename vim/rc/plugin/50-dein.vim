@@ -86,16 +86,9 @@ let g:quickrun_no_default_key_mappings = 1
 nnoremap \r :cclose<CR>:write<CR>:QuickRun -mode n<CR>
 xnoremap \r :<C-U>cclose<CR>:write<CR>gv:QuickRun -mode v<CR>
 
-" unite
-call dein#add('Shougo/unite.vim')
-call dein#add('ujihisa/unite-colorscheme', {'depends' : 'Shougo/unite.vim'})
-
 " vimproc
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('Shougo/vimshell', {'depends' : 'Shougo/vimproc.vim'})
-
-" comment
-call dein#add('tomtom/tcomment_vim')
 
 " indent
 call dein#add('nathanaelkane/vim-indent-guides')

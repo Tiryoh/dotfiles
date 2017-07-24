@@ -19,12 +19,24 @@
 #repo = 'Shougo/vimshell'
 #on_source = 'vimproc.vim'
 
+# unite
 [[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+depends = ['unite.vim']
+
+# comment
+[[plugins]]
+repo = 'tyru/caw.vim'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
