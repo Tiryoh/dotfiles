@@ -7,6 +7,11 @@ if [ -x ~/.pyenv ]; then
     eval "$(pyenv init -)"
 fi
 
+if [ -x ~/.rbenv ]; then
+    export PATH=~/.rbenv/bin:$PATH
+    eval "$(rbenv init -)"
+fi
+
 if [ -x ~/catkin_ws ]; then
     function catkin_make(){(cd $HOME/catkin_ws && command catkin_make $@) && source $HOME/catkin_ws/devel/setup.bash;}
     export MYWLAN0IP=`ifconfig wlan0 2>/dev/null | grep -o -E "([0-9]+\.){3}[0-9]+" | head -n1`
