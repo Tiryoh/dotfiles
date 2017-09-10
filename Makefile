@@ -31,6 +31,7 @@ git:
 
 pyenv:
 	git clone https://github.com/yyuu/pyenv.git ${HOME}/.pyenv
+	git clone https://github.com/pyenv/pyenv-virtualenv.git ${HOME}/.pyenv/plugins/pyenv-virtualenv
 
 zsh_completion:
 	/bin/bash ./etc/init/install_zsh_completion.sh
