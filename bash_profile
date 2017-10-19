@@ -34,6 +34,10 @@ if [ -x ~/usr/local/go  ]; then
     export PATH=$GOPATH/bin:$PATH
 fi
 
+if [ -x ~/.local/bin  ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
+
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
