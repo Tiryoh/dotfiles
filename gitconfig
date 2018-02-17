@@ -9,6 +9,7 @@
 	default = matching
 [alias]
 	tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+	rmignore = !git rm --cached `git ls-files --full-name -i --exclude-from=.gitignore`
 [commit]
 	template = ~/dotfiles/git_commit_template
 	verbose = true
