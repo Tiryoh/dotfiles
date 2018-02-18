@@ -24,6 +24,11 @@ requires the following to run:
   * bash
     * make
     * bash
+  * zsh
+    * make
+    * git
+    * wget
+    * zsh
   * tmux
     * make
     * tmux
@@ -32,32 +37,12 @@ requires the following to run:
     * git
 
 ## Usage
-### Vim
 
-* git clone scripts
+* git clone scripts on your home directory
 
 ```
-git clone https://github.com/tiryoh/dotfiles.git
+git clone https://github.com/Tiryoh/dotfiles.git
 ```
-
-* archive original settings
-  * vim
-  
-  ```
-  mkdir $HOME/vimorg && mv $HOME/.vimrc $HOME/vimorg/ && mv $HOME/.vim $HOME/vimorg/
-  ```
-  
-  * bash
-  
-  ```
-  mv $HOME/.bashrc $HOME/.bashrc_org
-  ```
-
-  * tmux
-  
-  ```
-  mv $HOME/.tmux.conf $HOME/.tmux.conf_org
-  ```
 
 * move to `dotfiles` dir and install new settings
 
@@ -77,11 +62,20 @@ cd $HOME/dotfiles
     ```
     make vim
     ```
+
   * bash
-    * install new bashrc
+    * install new bashrc and imputrc
 
     ```
     make bash
+    ```
+
+  * zsh
+    * install prezto and zsh_completion
+
+    ```
+    make prezto
+    make zsh_completion
     ```
 
   * tmux
