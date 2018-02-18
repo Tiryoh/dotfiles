@@ -147,6 +147,11 @@ if [ -f ~/catkin_ws/devel/setup.bash ]; then
     source ~/catkin_ws/devel/setup.bash
 fi
 
+# added by travis gem
+if [ -f ~/.travis/travis.sh ]; then
+    source ~/.travis/travis.sh
+fi
+
 alias rosreload="source $HOME/catkin_ws/devel/setup.bash"
 alias dockerros="docker run -it --rm --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" tiryoh/ros-indigo-desktop:bash"
 
