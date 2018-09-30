@@ -22,6 +22,7 @@ bash:
 	ln -s ${PWD}/inputrc ${HOME}/.inputrc
 	ln -s ${PWD}/bashrc ${HOME}/.bashrc
 	ln -s ${PWD}/bash_profile ${HOME}/.bash_profile
+	ln -s ${PWD}/bash_completion ${HOME}/.bash_completion
 
 tmux:
 	ln -s ${PWD}/tmux.conf ${HOME}/.tmux.conf
