@@ -8,6 +8,7 @@ set clipboard+=unnamedplus,unnamed
 set laststatus=2
 set cmdheight=2
 set titleold=zsh
+set cursorline
 
 filetype off
 filetype plugin indent off
