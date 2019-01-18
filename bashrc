@@ -143,6 +143,9 @@ promps
 if [ -f /opt/ros/indigo/setup.bash ]; then
     source /opt/ros/indigo/setup.bash
 fi
+if [ -f /opt/ros/kinetic/setup.bash ]; then
+    source /opt/ros/kinetic/setup.bash
+fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then
     source ~/catkin_ws/devel/setup.bash
 fi
