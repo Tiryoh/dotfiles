@@ -19,6 +19,9 @@
 #repo = 'Shougo/vimshell'
 #on_source = 'vimproc.vim'
 
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
 # unite
 [[plugins]]
 repo = 'Shougo/unite.vim'
@@ -44,34 +47,42 @@ repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-# ruby
 [[plugins]]
-repo = 'tpope/vim-rails'
-on_ft = ['ruby', 'rb']
+repo = 'vim-syntastic/syntastic'
 
-[[plugins]]
-repo = 'vim-ruby/vim-ruby'
-on_ft = ['ruby', 'rb']
+# ruby
+#[[plugins]]
+#repo = 'tpope/vim-rails'
+#on_ft = ['ruby', 'rb']
+#
+#[[plugins]]
+#repo = 'vim-ruby/vim-ruby'
+#on_ft = ['ruby', 'rb']
 
 # markdown
-[[plugins]]
-repo = 'godlygeek/tabular'
-on_ft = ['markdown', 'md']
+#[[plugins]]
+#repo = 'godlygeek/tabular'
+#on_ft = ['markdown', 'md']
 
-[[plugins]]
-repo = 'kannokanno/previm'
-on_ft = ['markdown', 'md']
+# [[plugins]]
+# repo = 'previm/previm'
+# on_ft = ['markdown', 'md']
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_ft = ['markdown', 'md']
 
 # toml
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+#[[plugins]]
+#repo = 'cespare/vim-toml'
+#on_ft = 'toml'
 
 # yaml
-[[plugins]]
-repo = 'stephpy/vim-yaml'
-on_ft = ['yaml', 'yml']
+#[[plugins]]
+#repo = 'stephpy/vim-yaml'
+#on_ft = ['yaml', 'yml']
+
+# python
+#[[plugins]]
+#repo = 'davidhalter/jedi-vim'
+#on_ft = 'py'
