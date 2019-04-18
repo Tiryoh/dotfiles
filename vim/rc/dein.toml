@@ -21,6 +21,9 @@
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
+hook_add='''
+    let g:polyglot_disabled = ['markdown']
+'''
 
 # unite
 [[plugins]]
@@ -64,9 +67,9 @@ repo = 'vim-syntastic/syntastic'
 #repo = 'godlygeek/tabular'
 #on_ft = ['markdown', 'md']
 
-# [[plugins]]
-# repo = 'previm/previm'
-# on_ft = ['markdown', 'md']
+[[plugins]]
+repo = 'previm/previm'
+on_ft = ['markdown', 'md']
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
