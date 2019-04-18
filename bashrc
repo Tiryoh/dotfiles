@@ -140,14 +140,20 @@ function promps {
 promps
 
 # ROS settings
-if [ -f /opt/ros/indigo/setup.bash ]; then
-    source /opt/ros/indigo/setup.bash
-fi
 if [ -f /opt/ros/kinetic/setup.bash ]; then
     source /opt/ros/kinetic/setup.bash
 fi
+if [ -f /opt/ros/melodic/setup.bash ]; then
+    source /opt/ros/melodic/setup.bash
+fi
+if [ -f /opt/ros/crystal/setup.bash ]; then
+    source /opt/ros/crystal/setup.bash
+fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then
     source ~/catkin_ws/devel/setup.bash
+fi
+if [ -f ~/ros2_ws/install/setup.bash ]; then
+    source ~/ros2_ws/install/setup.bash
 fi
 
 # added by travis gem
