@@ -20,7 +20,7 @@ requires the following to run:
   * Vim
     * make
     * curl
-    * Vim 7.4 (+clipboard +lua)
+    * Vim 8.x (+clipboard +lua)
   * bash
     * make
     * bash
@@ -136,5 +136,5 @@ This repository is licensed under the MIT license, see [LICENSE](./LICENSE).
 
 Unless attributed otherwise, everything is under the MIT license.
 
-Copyright (c) 2016-2017 [Tiryoh](https://github.com/Tiryoh)
+Copyright (c) 2016-2019 [Tiryoh](https://github.com/Tiryoh)
 
