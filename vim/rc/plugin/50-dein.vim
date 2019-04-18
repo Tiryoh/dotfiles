@@ -101,6 +101,39 @@ augroup IndentGuidesColors
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 augroup END
 
+" statusline
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+
+" colorscheme for statusline
+augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+    autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+augroup END
+
+" coding style check
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_error_symbol='✗'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_warning_symbol = '⚠'
+
+let g:syntastic_python_checkers = ['flake8']
+
 " colorscheme
 "call dein#add('w0ng/vim-hybrid')
 "call dein#add('tomasr/molokai')
