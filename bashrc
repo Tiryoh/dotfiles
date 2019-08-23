@@ -146,8 +146,8 @@ fi
 if [ -f /opt/ros/melodic/setup.bash ]; then
     source /opt/ros/melodic/setup.bash
 fi
-if [ -f /opt/ros/crystal/setup.bash ]; then
-    source /opt/ros/crystal/setup.bash
+if [ -f /opt/ros/dashing/setup.bash ]; then
+    source /opt/ros/dashing/setup.bash
 fi
 if [ -f ~/catkin_ws/devel/setup.bash ]; then
     source ~/catkin_ws/devel/setup.bash
