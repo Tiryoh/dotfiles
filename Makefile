@@ -19,8 +19,11 @@ vim: ## install vimrc without dein.vim
 	mkdir ${HOME}/.vim/backup
 	mkdir ${HOME}/.vim/dict
 
-deinvim: ## install dein.vim (vimrc required)
+deinvim: ## install dein.vim (vimrc settings required)
 	/bin/bash ./etc/init/install_deinvim.sh
+
+_install_deinvim: ## setup dein.vim from installed files
+	/bin/bash -c 'vim -c ":silent! call dein#install() | :q"'
 
 bash: ## install bashrc
 	/bin/bash ./etc/init/backup_bash.sh
