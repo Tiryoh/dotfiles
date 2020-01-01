@@ -29,9 +29,18 @@ if [ -x ~/usr/local/bin  ]; then
     export PATH=$HOME/usr/local/bin:$PATH
 fi
 
+if [ -x /usr/local/go  ]; then
+    export PATH=/usr/local/go/bin:$PATH
+    if [ -x ~/go/bin  ]; then
+        export PATH=$HOME/go/bin:$PATH
+    fi
+fi
+
 if [ -x ~/usr/local/go  ]; then
-    export GOPATH=$HOME/usr/local/go
-    export PATH=$GOPATH/bin:$PATH
+    export PATH=$HOME/usr/local/go/bin:$PATH
+    if [ -x ~/go/bin  ]; then
+        export PATH=$HOME/go/bin:$PATH
+    fi
 fi
 
 if [ -x ~/.local/bin  ]; then
