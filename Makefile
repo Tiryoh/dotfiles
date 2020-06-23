@@ -9,7 +9,7 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 prezto: ## install prezto from https://github.com/Tiryoh/prezto
-	/bin/zsh ./etc/init/install_prezto.sh
+	zsh ./etc/init/install_prezto.sh
 
 vim: ## install vimrc without dein.vim
 	/bin/bash ./etc/init/backup_vim.sh
