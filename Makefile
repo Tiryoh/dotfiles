@@ -43,5 +43,5 @@ pyenv: ## install pyenv
 	git clone https://github.com/pyenv/pyenv-virtualenv.git ${HOME}/.pyenv/plugins/pyenv-virtualenv
 
 zsh_completion: ## install zsh_completion
-	/bin/bash ./etc/init/install_zsh_completion.sh
+	@echo "Moved to https://github.com/Tiryoh/prezto/tree/master/modules/completion/opt"
 
