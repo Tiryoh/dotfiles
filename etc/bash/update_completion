@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -e
+mkdir -p ~/.bash_completion.d
+
+BASH_COMPLETION_DIR="$HOME/.bash_completion.d"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [ $# = 0 ] || [ "$1" = "--help" ] || [ "$1" = "help" ]; then
+    echo "bash-completion update script usage"
+    grep -e "\-o" ${SCRIPT_DIR}/update_completion | \
+        grep  -e "\-completion" | \
+        sed -e 's#.*/\(.*\)-completion.*#\1#g'
+fi
+
+if [ "$1" = "docker-compose" ]; then
+    curl -sL https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose \
+        -o ${BASH_COMPLETION_DIR}/docker-compose-completion.bash
+fi
+
+if [ "$1" = "docker" ]; then
+    curl -sL https://raw.githubusercontent.com/docker/cli/$(docker version --format 'v{{.Server.Version}}')/contrib/completion/bash/docker \
+        -o ${BASH_COMPLETION_DIR}/docker-completion.bash
+fi
+
+if [ "$1" = "gibo" ]; then
+    curl -sL https://raw.githubusercontent.com/simonwhitaker/gibo/master/shell-completions/gibo-completion.bash \
+        -o ${BASH_COMPLETION_DIR}/gibo-completion.bash
+fi
+
+if [ "$1" = "git" ]; then
+    curl -sL https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash \
+        -o ${BASH_COMPLETION_DIR}/git-completion.bash
+fi
+
+if [ "$1" = "nodebrew" ]; then
+    curl -sL https://raw.githubusercontent.com/hokaccha/nodebrew/master/completions/bash/nodebrew-completion \
+        -o ${BASH_COMPLETION_DIR}/nodebrew-completion.bash
+fi
+
+if [ "$1" = "catkin" ]; then
+    curl -sL https://raw.githubusercontent.com/catkin/catkin_tools/master/completion/catkin_tools-completion.bash \
+        -o ${BASH_COMPLETION_DIR}/catkin_tools-completion.bash
+fi
