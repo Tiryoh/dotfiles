@@ -11,6 +11,7 @@ fi
 
 if [ -d ~/.anyenv ]; then
     export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
 else
     if [ -d ~/.pyenv ]; then
         export PYENV_ROOT=$HOME/.pyenv
