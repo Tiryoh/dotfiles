@@ -1,4 +1,15 @@
 #!/bin/bash
 
-[ ! -z $(echo ${1:-0} $(tmux -V) | awk '$3>$1{print $3}') ]
+COMPARE=${1:->}
 
+if [[ $COMPARE == "<" ]] ; then
+    [ ! -z $(echo ${2:-0} $(tmux -V) | awk '$3<$1{print $3}') ]
+else
+    [ ! -z $(echo ${2:-0} $(tmux -V) | awk '$3>$1{print $3}') ]
+fi
+
+# usage (in .tmux.conf)
+# if-shell "~/dotfiles/etc/tmux/check_tmux_version '>' 1.7" '\
+#     set -g status-position top; \
+#     set-option -g renumber-windows on; \
+# '
