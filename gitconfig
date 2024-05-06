@@ -11,6 +11,8 @@
 	rmignore = !FILES=$(git ls-files --full-name -i --exclude-from=.gitignore) && [[ ! -z "$FILES" ]] && git rm --cached $FILES || echo "nothing todo"
 	# https://qiita.com/masarufuruya/items/7480854d4bc2f0443fc1#comment-e86512a296cd84142d55
 	tr = log --graph --branches --tags --remotes --date=short --format=\"%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)\" 
+	# https://stackoverflow.com/questions/37664226/git-fetch-origin-prune-doesnt-delete-local-branches#comment135515489_59228595
+	fetch-prune = !git fetch --prune && git branch --v | grep '\\[gone\\]' | awk '{print $1}' | xargs git branch -D
 [commit]
 	template = ~/dotfiles/git_commit_template
 	verbose = true
