@@ -1,4 +1,5 @@
 #!/bin/bash
-curl https://raw.githubusercontent.com/Shougo/dein-installer.vim/main/installer.sh > ${PWD}/installer.sh
-sh ${PWD}/installer.sh ${PWD}/vim/dein
-rm -f ${PWD}/installer.sh
+
+ROOT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0})/../../; pwd)
+
+sh ${ROOT_DIR}/etc/vim/install_deinvim2.sh ${ROOT_DIR}/vim/dein
