@@ -134,6 +134,10 @@ let g:syntastic_style_warning_symbol = '⚠'
 
 let g:syntastic_python_checkers = ['flake8']
 
+" fern
+" https://github.com/lambdalisue/vim-fern/issues/506
+let g:fern_disable_startup_warnings = 1
+
 " colorscheme
 "call dein#add('w0ng/vim-hybrid')
 "call dein#add('tomasr/molokai')
