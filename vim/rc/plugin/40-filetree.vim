@@ -1,4 +1,5 @@
 let file_name = expand('%')
+let g:fern#default_hidden=1
 
 function! OpenFern()
   execute "Fern . -reveal=" . expand("%") . " -drawer -width=40 -toggle"
