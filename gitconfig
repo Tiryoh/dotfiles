@@ -16,3 +16,5 @@
 [commit]
 	template = ~/dotfiles/git_commit_template
 	verbose = true
+[pull]
+	ff = only
