@@ -1,4 +1,4 @@
-.PHONY: all prezto vim deinvim bash tmux git pyenv zsh_completion
+.PHONY: all prezto vim deinvim bash tmux git pyenv zsh_completion claude-skills
 
 .DEFAULT_GOAL := help
 
@@ -44,4 +44,22 @@ pyenv: ## install pyenv
 
 zsh_completion: ## install zsh_completion
 	@echo "Moved to https://github.com/Tiryoh/prezto/tree/master/modules/completion/opt"
+
+CLAUDE_SKILLS_SRC := $(wildcard ${PWD}/config/claude/skills/*)
+CLAUDE_SKILLS_DST_DIR := ${HOME}/.config/claude/skills
+
+# Symlink each skill directory individually instead of the parent skills/ directory.
+# Symlinking the parent directory causes Claude Code to fail to load skills.
+# See: https://github.com/anthropics/claude-code/issues/25367
+claude-skills: ## install Claude Code custom skills
+	mkdir -p $(CLAUDE_SKILLS_DST_DIR)
+	@for skill in $(CLAUDE_SKILLS_SRC); do \
+		name=$$(basename $$skill); \
+		if [ -L "$(CLAUDE_SKILLS_DST_DIR)/$$name" ]; then \
+			echo "skip: $$name (already linked)"; \
+		else \
+			ln -s $$skill $(CLAUDE_SKILLS_DST_DIR)/$$name; \
+			echo "linked: $$name"; \
+		fi; \
+	done
 
