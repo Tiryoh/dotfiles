@@ -1,0 +1,3 @@
+WRN 2026-02-22T20:43:20.733 ?.3230     server_start:199: Failed to start server: operation not permitted: /var/folders/53/jbn3jpl9087d3nw2_k_5_j2m0000gn/T/nvim.daisuke/kj0kUl/nvim.3230.0
+WRN 2026-02-22T20:43:25.584 ?.3232     server_start:199: Failed to start server: operation not permitted: /var/folders/53/jbn3jpl9087d3nw2_k_5_j2m0000gn/T/nvim.daisuke/ZFf3zN/nvim.3232.0
+WRN 2026-02-22T20:54:09.562 ?.14239    server_start:199: Failed to start server: operation not permitted: /var/folders/53/jbn3jpl9087d3nw2_k_5_j2m0000gn/T/nvim.daisuke/TZiS1c/nvim.14239.0
