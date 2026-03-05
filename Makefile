@@ -46,7 +46,7 @@ zsh_completion: ## install zsh_completion
 	@echo "Moved to https://github.com/Tiryoh/prezto/tree/master/modules/completion/opt"
 
 CLAUDE_SKILLS_SRC := $(wildcard ${PWD}/config/claude/skills/*)
-CLAUDE_SKILLS_DST_DIR := ${HOME}/.config/claude/skills
+CLAUDE_SKILLS_DST_DIR := $(if $(wildcard ${HOME}/.claude/),${HOME}/.claude/skills,${HOME}/.config/claude/skills)
 
 # Symlink each skill directory individually instead of the parent skills/ directory.
 # Symlinking the parent directory causes Claude Code to fail to load skills.
