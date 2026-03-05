@@ -41,11 +41,18 @@ EOF
 
 ### Continue the same objective with context
 
+Unlike `codex exec review`, `resume` **accepts a `[PROMPT]` argument** — use this to pass or reinforce review criteria:
+
 ```bash
 codex exec resume --last "Continue plan review. No nits. Focus on unresolved Critical/High risks and verify if the revised plan closes them."
 ```
 
-Use `resume` only when the objective is unchanged (same feature/plan and acceptance criteria). Start a new session when scope changes significantly.
+Rules:
+
+- Use `codex resume` or `codex exec resume` (not `codex --resume`)
+- Pass the review criteria as the `[PROMPT]` argument on resume
+- Use `resume` only when the objective is unchanged (same feature/plan and acceptance criteria)
+- Start a new session when scope changes significantly
 
 ## Workflow
 

@@ -48,44 +48,44 @@ fi
 codex exec review --commit <SHA>
 ```
 
-### Review with custom instructions
+### Review with custom instructions (standalone only)
 
-`[PROMPT]` is a positional argument. Use it to tighten review focus and severity thresholds:
+`[PROMPT]` is a positional argument that **cannot be combined** with `--uncommitted`, `--base`, or `--commit`. When no scope flag is needed:
 
 ```bash
 codex exec review "Focus on error handling and edge cases"
 ```
 
-## Default Prompt (No Nits)
+## Default Review Criteria (No Nits)
 
-When no custom guidance is provided, use this prompt to avoid low-value feedback:
-
-```text
-Review only meaningful defects. Prioritize Critical and High severity issues that can cause incorrect behavior, regressions, security problems, data loss/corruption, significant performance issues, or broken tests. Ignore nits: style preferences, naming bikeshedding, formatting, minor refactors, and speculative improvements unless they are directly tied to a real defect.
-```
-
-When possible, pass the prompt directly in the review command:
+**Important**: `[PROMPT]` and scope flags (`--uncommitted`, `--base`, `--commit`) are mutually exclusive. When using scope flags, run them without a prompt argument:
 
 ```bash
-codex exec review --uncommitted "<DEFAULT_PROMPT>"
-codex exec review --base <branch> "<DEFAULT_PROMPT>"
-codex exec review --commit <SHA> "<DEFAULT_PROMPT>"
+codex exec review --uncommitted
+codex exec review --base <branch>
+codex exec review --commit <SHA>
 ```
+
+After receiving Codex output, Claude must filter and present findings using these criteria:
+
+- **Report only** Critical and High severity issues: incorrect behavior, regressions, security problems, data loss/corruption, significant performance issues, or broken tests
+- **Ignore nits**: style preferences, naming bikeshedding, formatting, minor refactors, and speculative improvements unless directly tied to a real defect
+- If the user provides custom review criteria, use those instead
 
 ## Session Continuity (`resume`)
 
-Use `resume` only when continuing the same review objective (same PR/branch and same acceptance criteria).
+Use `resume` only when continuing the same review objective (same PR/branch and same acceptance criteria). Unlike `review`, `resume` **accepts a `[PROMPT]` argument** — use this to pass review criteria that cannot be provided during the initial `review` invocation with scope flags.
 
-Prefer:
+Preferred pattern:
 
 ```bash
-codex exec resume --last "Continue review. No nits. Focus on Critical/High correctness, regressions, security, and data safety. Keep waiver decisions unless new evidence appears."
+codex exec resume --last "Review only meaningful defects. Prioritize Critical and High severity issues that can cause incorrect behavior, regressions, security problems, data loss/corruption, significant performance issues, or broken tests. Ignore nits: style preferences, naming bikeshedding, formatting, minor refactors, and speculative improvements unless they are directly tied to a real defect."
 ```
 
 Rules:
 
 - Use `codex resume` or `codex exec resume` (not `codex --resume`)
-- Re-state constraints at resume start (`No nits`, severity focus, waiver policy)
+- Pass the default No Nits prompt (or user's custom criteria) as the `[PROMPT]` argument on resume
 - Start a new session when scope changes significantly (different branch, changed requirements, major new diff)
 
 ## Workflow
@@ -94,7 +94,7 @@ Rules:
 2. **Enforce Codex review**: When called from Claude Code, always use `codex exec review` for the review pass. Do not rely on Claude-only self-review.
 3. **Resolve base branch robustly**: For branch-diff reviews, prefer a base branch provided by Claude Code, then validate it with `git`. If missing/invalid, fall back to default-branch detection. If still unresolved, ask the user.
 4. **Select session mode**: Use a fresh session by default; use `resume` only if the objective is unchanged and continuity adds value.
-5. **Run the review**: Execute `codex exec review` with the appropriate flags and the default prompt above (unless the user gives custom criteria).
+5. **Run the review**: Execute `codex exec review` with the appropriate scope flag (no prompt argument). Apply the default review criteria when presenting findings.
 6. **Fix and rerun**: Repeat review -> fix -> review until no Critical/High issues remain, or the user explicitly stops.
 7. **Present findings**: Share the output with Critical/High first, then lower-priority items.
 8. **Document unresolved items**: If an issue is intentionally not fixed, require a waiver entry using the template below.
@@ -126,4 +126,4 @@ Use waivers for intentional tradeoffs, false positives, out-of-scope requests, o
 
 ## Help
 
-!`codex exec review --help`
+Run `codex exec review --help` for full usage details.
