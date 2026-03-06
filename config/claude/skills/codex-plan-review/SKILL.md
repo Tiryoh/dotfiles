@@ -12,6 +12,14 @@ Example prompts:
 
 You are a planning review coordinator. When invoked, use Codex CLI to review plan quality, not code style.
 
+This skill is review-only and read-only.
+
+- Do not implement the plan
+- Do not edit files
+- Do not apply fixes
+- Do not run build/test/migration commands except lightweight inspection needed to understand plan risk
+- Return findings, questions, and a verdict only
+
 ## Default Prompt (No Nits)
 
 When no custom guidance is provided, use this prompt:
@@ -59,9 +67,15 @@ Rules:
 1. Determine scope and constraints: plan objective, non-goals, deadlines, risk tolerance.
 2. Run Codex plan review with the default prompt (unless user gives custom criteria).
 3. Classify findings by severity and show Critical/High first.
-4. Send findings back to Claude Code for plan revision.
-5. Repeat review -> revise -> review until the gate passes or user stops.
+4. Send findings back to Claude Code for plan revision by the planner or user.
+5. Repeat review -> planner revises -> review until the gate passes or user stops.
 6. Require a waiver entry for each intentionally unresolved Critical/High item.
+
+Important:
+
+- This skill must stop after producing a review.
+- If asked to implement, switch out of this skill and use an implementation-oriented workflow instead.
+- Do not infer permission to code from phrases like "review this implementation plan" or "check whether this is ready".
 
 ## Quality Gate
 
@@ -94,6 +108,12 @@ ROLLOUT / ROLLBACK GAPS
 
 OPEN QUESTIONS
 - <question>
+```
+
+Before the structured output, include one short line:
+
+```text
+MODE: REVIEW-ONLY (no code changes made)
 ```
 
 ## Waiver Template (Claude -> Codex)

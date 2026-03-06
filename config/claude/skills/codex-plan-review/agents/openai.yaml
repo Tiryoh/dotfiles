@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex Plan Review"
   short_description: "Review coding plans for risk and execution gaps"
-  default_prompt: "Use $codex-plan-review to review this implementation plan and surface only Critical/High risks."
+  default_prompt: "Use $codex-plan-review in review-only mode. Do not implement or edit anything. Review this implementation plan and surface only Critical/High risks, missing work, required tests, rollout/rollback gaps, open questions, and a GO/NO-GO verdict."
