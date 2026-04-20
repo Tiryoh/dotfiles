@@ -1,6 +1,6 @@
 [user]
 	email = tiryoh@gmail.com
-	name = Tiryoh
+	name = Daisuke Sato
 [core]
 	editor = vim
 	autoCRLF = false
@@ -18,3 +18,5 @@
 	verbose = true
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
