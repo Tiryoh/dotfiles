@@ -45,7 +45,7 @@ pyenv: ## install pyenv
 zsh_completion: ## install zsh_completion
 	@echo "Moved to https://github.com/Tiryoh/prezto/tree/master/modules/completion/opt"
 
-CLAUDE_SKILLS_SRC := $(wildcard ${PWD}/config/claude/skills/*)
+CLAUDE_SKILLS_SRC := $(wildcard ${PWD}/skills/*)
 CLAUDE_SKILLS_DST_DIR := $(if $(wildcard ${HOME}/.claude/),${HOME}/.claude/skills,${HOME}/.config/claude/skills)
 
 # Symlink each skill directory individually instead of the parent skills/ directory.
@@ -62,4 +62,9 @@ claude-skills: ## install Claude Code custom skills
 			echo "linked: $$name"; \
 		fi; \
 	done
+
+yazi:
+	ln -s ${PWD}/config/yazi ${HOME}/.config/yazi
+	cd ${HOME}/.config/yazi
+	ya pkg install
 
