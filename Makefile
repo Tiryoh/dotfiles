@@ -1,4 +1,4 @@
-.PHONY: all prezto vim deinvim bash tmux git pyenv zsh_completion claude-skills
+.PHONY: all prezto vim deinvim bash tmux git pyenv zsh_completion claude-skills opencode
 
 .DEFAULT_GOAL := help
 
@@ -47,6 +47,8 @@ zsh_completion: ## install zsh_completion
 
 CLAUDE_SKILLS_SRC := $(wildcard ${PWD}/skills/*)
 CLAUDE_SKILLS_DST_DIR := $(if $(wildcard ${HOME}/.claude/),${HOME}/.claude/skills,${HOME}/.config/claude/skills)
+OPENCODE_AGENTS_SRC := $(wildcard ${PWD}/config/opencode/agents/*.md)
+OPENCODE_PROMPTS_SRC := $(wildcard ${PWD}/config/opencode/prompts/*)
 
 # Symlink each skill directory individually instead of the parent skills/ directory.
 # Symlinking the parent directory causes Claude Code to fail to load skills.
@@ -63,8 +65,21 @@ claude-skills: ## install Claude Code custom skills
 		fi; \
 	done
 
+opencode: ## install OpenCode settings
+	mkdir -p ${HOME}/.config/opencode/agents ${HOME}/.config/opencode/prompts
+	ln -sfnT ${PWD}/config/opencode/opencode.json ${HOME}/.config/opencode/opencode.json
+	@for agent in $(OPENCODE_AGENTS_SRC); do \
+		name=$$(basename $$agent); \
+		ln -sfnT $$agent ${HOME}/.config/opencode/agents/$$name; \
+		echo "linked: agents/$$name"; \
+	done
+	@for prompt in $(OPENCODE_PROMPTS_SRC); do \
+		name=$$(basename $$prompt); \
+		ln -sfnT $$prompt ${HOME}/.config/opencode/prompts/$$name; \
+		echo "linked: prompts/$$name"; \
+	done
+
 yazi:
 	ln -s ${PWD}/config/yazi ${HOME}/.config/yazi
 	cd ${HOME}/.config/yazi
 	ya pkg install
-

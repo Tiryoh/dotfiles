@@ -1,0 +1,59 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
+  },
+
+  "agent": {
+    "plan": {
+      "description": "Architectural planning with deep reasoning. Read-only.",
+      "mode": "primary",
+      "reasoningEffort": "high",
+      "temperature": 0.1,
+      "prompt": "{file:prompts/plan.txt}",
+      "permission": {
+        "edit": "deny",
+        "todoread": "allow",
+        "todowrite": "allow",
+        "bash": {
+          "*": "deny",
+          "git log *": "allow",
+          "git diff *": "allow",
+          "git show *": "allow",
+          "grep *": "allow",
+          "rg *": "allow",
+          "find *": "allow",
+          "cat *": "allow",
+          "ls *": "allow",
+          "head *": "allow",
+          "tail *": "allow",
+          "wc *": "allow"
+        },
+        "webfetch": "allow"
+      }
+    },
+    "build": {
+      "description": "Implementation based on plan. All tools enabled.",
+      "mode": "primary",
+      "reasoningEffort": "medium",
+      "temperature": 0.3,
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "*": "ask",
+          "git status *": "allow",
+          "git diff *": "allow",
+          "git log *": "allow",
+          "grep *": "allow",
+          "rg *": "allow",
+          "cat *": "allow",
+          "ls *": "allow",
+          "find *": "allow"
+        }
+      }
+    }
+  }
+}
