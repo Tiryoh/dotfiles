@@ -1,3 +1,8 @@
+---
+name: resolve-pr-comments
+description: Review unresolved GitHub PR comments, apply fixes, commit, push, and reply.
+---
+
 # resolve-pr-comments
 
 PRのレビューコメントを確認し、コード修正 → commit → push → 返信を行う。

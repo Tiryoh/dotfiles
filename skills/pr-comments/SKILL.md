@@ -1,4 +1,5 @@
 ---
+name: pr-comments
 description: "Fetch and display comments from the current GitHub pull request"
 user-invocable: true
 ---
