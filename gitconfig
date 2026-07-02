@@ -12,7 +12,7 @@
 	# https://qiita.com/masarufuruya/items/7480854d4bc2f0443fc1#comment-e86512a296cd84142d55
 	tr = log --graph --branches --tags --remotes --date=short --format=\"%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)\" 
 	# https://stackoverflow.com/questions/37664226/git-fetch-origin-prune-doesnt-delete-local-branches#comment135515489_59228595
-	fetch-prune = !git fetch --prune && git branch --v | grep '\\[gone\\]' | awk '{print $1}' | xargs git branch -D
+	fetch-prune = "!git fetch --prune && git branch -v | grep \"\\\\[gone\\\\]\" | sed \"s/^[+ ]*//\" | cut -d\" \" -f1 | while read branch; do wt=$(git worktree list | grep -F \"[$branch]\" | cut -d\" \" -f1); if [ -n \"$wt\" ]; then if git -C \"$wt\" status --porcelain 2>/dev/null | grep -q .; then echo \"SKIP (dirty): $branch\"; continue; else git worktree remove \"$wt\" || { echo \"FAILED (worktree): $branch\"; continue; }; fi; fi; git branch -D \"$branch\" 2>&1 || echo \"FAILED: $branch\"; done"
 [commit]
 	template = ~/dotfiles/git_commit_template
 	verbose = true
