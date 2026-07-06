@@ -6,7 +6,7 @@
 	autoCRLF = false
 	#excludesfile = ~/.gitignore_global  # use ~/.config/git/ignore
 [push]
-	default = matching
+	default = simple
 [alias]
 	rmignore = !FILES=$(git ls-files --full-name -c -i --exclude-from=.gitignore) && [[ ! -z "$FILES" ]] && git rm --cached $FILES || echo "nothing todo"
 	# https://qiita.com/masarufuruya/items/7480854d4bc2f0443fc1#comment-e86512a296cd84142d55
@@ -23,3 +23,8 @@
 [ghq]
 	root = ~/worktree
 	root = ~/ghq
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
