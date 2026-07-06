@@ -136,5 +136,6 @@ This repository is licensed under the MIT license, see [LICENSE](./LICENSE).
 
 Unless attributed otherwise, everything is under the MIT license.
 
-Copyright (c) 2016-2019 [Tiryoh](https://github.com/Tiryoh)
+Third-party attributions are documented in NOTICE files near the relevant files.
 
+Copyright (c) 2016-2019 [Tiryoh](https://github.com/Tiryoh)

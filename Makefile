@@ -52,6 +52,7 @@ OPENCODE_PROMPTS_SRC := $(wildcard ${PWD}/config/opencode/prompts/*)
 
 # Symlink each skill directory individually instead of the parent skills/ directory.
 # Symlinking the parent directory causes Claude Code to fail to load skills.
+# Keep per-skill NOTICE files with the installed skills for third-party attributions.
 # See: https://github.com/anthropics/claude-code/issues/25367
 claude-skills: ## install Claude Code custom skills
 	mkdir -p $(CLAUDE_SKILLS_DST_DIR)
